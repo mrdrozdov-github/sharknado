@@ -12,7 +12,7 @@ program.parse(process.argv);
 var inquirer = require('inquirer');
 var fs = require('fs');
 var path = require('path');
-var sharks = fs.readFileSync(path.resolve('./sharks.txt'), 'utf8').split('@@@@@@@@@@');
+var sharks = fs.readFileSync(__dirname + '/sharks.txt', 'utf8').split('@@@@@@@@@@');
 
 function youLose() {
 	var min = 0;
