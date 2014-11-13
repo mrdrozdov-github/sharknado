@@ -1,0 +1,27 @@
+{
+  "name": "sharknado",
+  "version": "0.0.1",
+  "description": "The most frightening CLI you've never heard of.",
+  "readme": "README.md",
+  "main": "index.js",
+  "bin": {
+    "sharknado": "bin/sharknado"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrdrozdov/sharknado"
+  },
+  "author": "Andrew Drozdov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrdrozdov/sharknado/issues"
+  },
+  "homepage": "https://github.com/mrdrozdov/sharknado",
+  "dependencies": {
+    "commander": "^2.5.0",
+    "inquirer": "^0.8.0"
+  }
+}
