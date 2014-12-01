@@ -1,4 +1,3 @@
-
 var program = require('commander');
 var pkg = require('./package.json');
 
@@ -12,20 +11,11 @@ program.parse(process.argv);
 var inquirer = require('inquirer');
 var fs = require('fs');
 var path = require('path');
-var sharks = fs.readFileSync(__dirname + '/sharks.txt', 'utf8').split('@@@@@@@@@@');
-
-function youLose() {
-	var min = 0;
-	var max = sharks.length - 1;
-	var r = Math.floor(Math.random() * (max - min + 1)) + min;
-	console.log('You lose.');
-	console.log(sharks[r]);
-	console.log('source: http://www.ascii-art.de/ascii/s/sharks.txt');
-}
+var SHARK_FILE = __dirname + '/sharks.txt';
 
 inquirer.prompt({
 	type: 'list',
-	name: 'woc',
+	name: 'weaponOfChoice',
 	message: 'A tornado of sharks is coming at you. What is your weapon of choice?',
 	choices: [
 		'Chainsaw',
@@ -33,7 +23,7 @@ inquirer.prompt({
 		'Gluten'
 	]
 }, function (answers) {
-	switch (answers['woc']) {
+	switch (answers['weaponOfChoice']) {
 		case 'Chainsaw':
 			youLose();
 			break;
@@ -48,3 +38,17 @@ inquirer.prompt({
 			break;
 	}
 });
+
+function youLose() {
+	console.log('You lose.');
+	console.log(getRandomShark());
+	console.log('source: http://www.ascii-art.de/ascii/s/sharks.txt');
+}
+
+function getRandomShark() {
+	var sharks = fs.readFileSync(SHARK_FILE, 'utf8').split('@@@@@@@@@@');
+	var min = 0;
+	var max = sharks.length - 1;
+	var r = Math.floor(Math.random() * (max - min + 1)) + min;
+	return sharks[r];
+}
